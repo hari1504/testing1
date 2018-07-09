@@ -1,0 +1,158 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+ 
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300'>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<title>Fullscreen search bar</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		var elementsArr = ['ambulance','apple','atoms','bandaid','bicycle','bottle','cross','eye','female_doctor','female_nurse','male_doctor','male_nurse','dropper','heart','mobile','pills','stethoscope','syringe','thermometer','tubes'];
+    var currentPage = 0;
+    var itemsPerPage = 4;
+    var icons = [];
+    var navText;
+
+    function buildIcons(){
+        var element, anim;
+        for(var i=0;i<elementsArr.length;i+=1){
+            element = document.getElementById('icon-container-'+elementsArr[i]);
+            element.style.display = 'none';
+            var params = {
+                container: document.getElementById('icon-'+elementsArr[i]),
+                autoplay:false,
+                loop:false,
+                animationData:animations[elementsArr[i]],
+                renderer:'svg'
+            };
+            anim = bodymovin.loadAnimation(params);
+            icons.push({
+                anim:anim,
+                element: element
+            })
+        }
+    }
+
+    function buildNavigation(){
+        navText = document.getElementById('navText');
+        var nextButton = document.getElementById('nextButton');
+        nextButton.addEventListener('click', function(){
+            movePage(1);
+        })
+        var prevButton = document.getElementById('prevButton');
+        prevButton.addEventListener('click', function(){
+            movePage(-1);
+        })
+    }
+
+
+    function renderPage(){
+        var i, len = icons.length;
+        for(i=0;i<len;i+=1){
+            if(i<currentPage*itemsPerPage || i>=(currentPage+1)*itemsPerPage){
+                icons[i].element.style.display = 'none';
+                icons[i].anim.goToAndStop(0);
+            } else {
+                icons[i].element.style.display = 'inline-block';
+                icons[i].anim.play();
+            }
+        }
+        navText.innerHTML = (currentPage+1)+'/'+Math.ceil(icons.length/itemsPerPage);
+    }
+
+    function movePage(dir){
+        if(currentPage === 0 && dir < 0){
+            return;
+        } else if((currentPage+1)*itemsPerPage > icons.length - 1 && dir > 0){
+            return;
+        }
+        currentPage += dir;
+        renderPage();
+
+    }
+
+    buildIcons();
+    buildNavigation();
+    renderPage();
+	</script>
+</head>
+<body>
+	<div class="header">
+    <div class="title">Medical SVG<br/>Animated Icons
+    </div>
+    <div class="bar"></div>
+</div>
+<div class="navigation">
+    <button class="navButton" id="prevButton">Prev</button>
+    <div id="navText">1/4</div>
+    <button class="navButton" id="nextButton">Next</button>
+</div>
+<div class="column">
+    <div class="bm_container" id="icon-container-cross">
+        <div class="bm_inner_container" id="icon-cross"></div>
+    </div><!--
+    --><div class="bm_container" id="https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjs3M2RjOPXAhWJsY8KHVEoBEYQjRwIBw&url=https%3A%2F%2Fwww.emaze.com%2F%40ACFCCOQT%2FStandard-1&psig=AOvVaw2x-uFGyu4ryBs6iynBG4oA&ust=1512021198890304">
+        <div class="bm_inner_container" id="https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjs3M2RjOPXAhWJsY8KHVEoBEYQjRwIBw&url=https%3A%2F%2Fwww.emaze.com%2F%40ACFCCOQT%2FStandard-1&psig=AOvVaw2x-uFGyu4ryBs6iynBG4oA&ust=1512021198890304"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-bottle">
+        <div class="bm_inner_container" id="icon-bottle"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-eye">
+        <div class="bm_inner_container" id="icon-eye"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-mobile">
+        <div class="bm_inner_container" id="icon-mobile"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-pills">
+        <div class="bm_inner_container" id="icon-pills"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-stethoscope">
+        <div class="bm_inner_container" id="icon-stethoscope"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-syringe">
+        <div class="bm_inner_container" id="icon-syringe"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-ambulance">
+        <div class="bm_inner_container" id="icon-ambulance"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-apple">
+        <div class="bm_inner_container" id="icon-apple"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-atoms">
+        <div class="bm_inner_container" id="icon-atoms"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-heart">
+        <div class="bm_inner_container" id="icon-heart"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-bicycle">
+        <div class="bm_inner_container" id="icon-bicycle"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-dropper">
+        <div class="bm_inner_container" id="icon-dropper"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-female_doctor">
+        <div class="bm_inner_container" id="icon-female_doctor"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-female_nurse">
+        <div class="bm_inner_container" id="icon-female_nurse"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-male_doctor">
+        <div class="bm_inner_container" id="icon-male_doctor"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-male_nurse">
+        <div class="bm_inner_container" id="icon-male_nurse"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-thermometer">
+        <div class="bm_inner_container" id="icon-thermometer"></div>
+    </div><!--
+        --><div class="bm_container" id="icon-container-tubes">
+        <div class="bm_inner_container" id="icon-tubes"></div>
+    </div>
+</div>
+</body>
+</html>
