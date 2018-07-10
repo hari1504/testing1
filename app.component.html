@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+<body>
+  <div class="header">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li class="active"><a routerLink="home">Home</a></li>
+        <li><a routerLink="cat">Cat</a></li>
+        <li><a routerLink="subcat">Subcat</a></li>
+        <li><a routerLink="subsubcat">Subsubcat</a></li>
+        <li><a routerLink="brand">Brand</a></li>
+      </ul>
+      <div class="search-bar">
+        <div class="container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="search.." name="search">
+            <button type="submit"><li><a src="glyphicon glyphicon-search"></a></li></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</body>
+</html>
